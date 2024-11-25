@@ -1,1 +1,82 @@
-@import './base.css';
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--brand-dark: #a6c5e3;
+	--brand-light: #e9f2f3;
+	--gray-color: rgba(0, 0, 0, 0.5);
+	--dark-transparent: rgba(0, 0, 0, 0.8);
+	--dark-gray: #49535c;
+	--light-color: #f5f4f4;
+	--dark-color: #d9d9d9;
+	--black-color: #000;
+	--white-color: #fff;
+	--error-color: #e62e2e;
+	--brand-gradient: linear-gradient(180deg, #E9F2F3 0%, #A6C5E3 100%);
+
+
+	--aeroport: "Aeroport", serif;
+	--roboto: "Roboto", serif;
+	--inter-regular: "Inter-Regular", serif;
+	--inter-medium: "Inter-Medium", serif;
+
+	--transition: .4s ease-in-out
+}
+
+button {
+	background-color: inherit;
+	border: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+li,
+ol {
+	list-style: none;
+}
+
+@font-face {
+	font-family: 'Aeroport';
+	src: url('./fonts/Aeroport.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('./fonts/Roboto-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter-Regular';
+	src: url('./fonts/Inter-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter-Medium';
+	src: url('./fonts/Inter-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
