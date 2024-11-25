@@ -1,12 +1,13 @@
 <template>
   <Header/>
   <main>
-		Main
+		<ProfilePage/>
   </main>
 </template>
 
 <script setup>
-import Header from "./components/Header.vue"
+import Header from "@/components/Header.vue"
+import ProfilePage from "@/components/ProfilePage.vue"
 </script>
 
 <style>

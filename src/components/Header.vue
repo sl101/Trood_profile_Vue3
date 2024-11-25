@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import ArrowIcon from '../assets/images/arrow.svg';
+import ArrowIcon from '@/assets/images/arrow.svg';
 export default {
 	components: { ArrowIcon },
 	setup() {
-		const logo_icon = new URL('../assets/images/logo.svg', import.meta.url).href;
+		const logo_icon = new URL('@/assets/images/logo.svg', import.meta.url).href;
 		return {
 			logo_icon,
 			page_name: "Profile"
