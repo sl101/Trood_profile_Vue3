@@ -9,8 +9,8 @@
     <div class="container">
       <div class="content">
         <div class="inner">
-          <ProjectsSection />
-          <TasksSection />
+          <EntitySection  entity="projects" title = "Projects:"/>
+          <EntitySection  entity="tasks" title = "Tasks:"/>
         </div>
       </div>
     </div>
@@ -18,8 +18,7 @@
 </template>
 
 <script setup>
-import ProjectsSection from "./ProjectsSection.vue"
-import TasksSection from "./TasksSection.vue"
+import EntitySection  from "./EntitySection .vue"
 </script>
 
 <style scoped>
@@ -57,4 +56,4 @@ import TasksSection from "./TasksSection.vue"
 		text-align: center;
 	}
 }
-</style>
+</style>./EntitySection .vue

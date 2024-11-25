@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<h2 class="title">Projects:</h2>
+		<h2 class="title">{{ title }}</h2>
 		<ul class="list">
-			<CardItem v-for="project in projects" :key="project.id" v-bind="project" @action-click="handleCreateProject" />
+			<CardItem v-for="item in list" :key="item.id" v-bind="item" @action-click="handleCreateEntity" />
 		</ul>
 	</div>
 </template>
@@ -10,13 +10,25 @@
 <script setup>
 import { useProfileStore } from "@/stores/profile";
 import CardItem from "./CardItem.vue";
+import { defineProps, computed } from "vue";
+
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  entity: {
+    type: String,
+    required: true,
+  },
+});
 
 const profileStore = useProfileStore();
-const projects = profileStore.profile_data.projects;
+const list = computed(() => profileStore.profile_data[props.entity]);
 
-const handleCreateProject = (id) => {
-	//TODO: create a function that creates a project
-	console.log("Clicked project ID:", id);
+const handleCreateEntity = (id) => {
+	//TODO: create a function that creates a entity
+	console.log("Clicked entity ID:", id);
 };
 </script>
 
