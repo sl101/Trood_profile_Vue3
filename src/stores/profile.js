@@ -4,7 +4,7 @@ import * as validators from '@/services/validation';
 const default_profile_data = {
 	name: "",
 	lastname: "",
-	jobTitle: "",
+	job_title: "",
 	phone: "",
 	address: "",
 	interests: [],
@@ -18,52 +18,39 @@ const default_profile_data = {
 
 export const useProfileStore = defineStore('profile', {
 	state: () => ({
-		profile_data: { ...default_profile_data },
-		validationErrors: {}
+		profile_data: JSON.parse(localStorage.getItem("profile_data")) || { ...default_profile_data },
+		validation_errors: {},
 	}),
 	getters: {
-		form_data: (state) => {
-			const { projects, tasks, ...formData } = state.profile_data;
-			return formData;
+		formData: (state) => {
+			const { projects, tasks, ...form_data } = state.profile_data;
+			return form_data;
 		},
-		//avatar: (state) => (state.profile_data.avatar),
-		//projects: (state) => (state.profile_data.projects),
-		//tasks: (state) => (state.profile_data.tasks),
-		//links: (state) => (state.profile_data.links),
-		//interests: (state) => (state.profile_data.interests),
-		//potential_interests: (state) => (state.profile_data.potential_interests),
-		//visibility: (state) => (state.profile_data.visibility),
-		hasErrors: (state) => Object.keys(state.validationErrors).length > 0,
+		hasErrors: (state) => Object.keys(state.validation_errors).length > 0,
 	},
 	actions: {
-		//saveProfileData(data) {
-		//	this.profile_data = { ...this.profile_data, ...data };
-		//	localStorage.setItem("profile_data", JSON.stringify(this.profile_data));
-		//},
-
-		validateField(fieldName, value) {
-			const validator = validators[`validate${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`];
+		validateField(field_name, value) {
+			const validator = validators[`validate${field_name.charAt(0).toUpperCase() + field_name.slice(1)}`];
 			if (validator) {
 				const error = validator(value);
 				if (error) {
-					this.validationErrors[fieldName] = error;
+					this.validation_errors[field_name] = error;
 				} else {
-					delete this.validationErrors[fieldName];
+					delete this.validation_errors[field_name];
 				}
 			}
 		},
 
-		loadProfileData() {
-			const data = localStorage.getItem("profile_data");
-			this.profile_data = data ? JSON.parse(data) : { ...default_profile_data };
-		},
-
-		updateProfileField(fieldName, value) {
-			this.validateField(fieldName, value);
-			if (!this.validationErrors[fieldName]) {
-				this.profile_data[fieldName] = value;
-				localStorage.setItem("profile_data", JSON.stringify(this.profile_data));
+		updateProfileField(field_name, value) {
+			this.validateField(field_name, value);
+			if (!this.validation_errors[field_name]) {
+				this.profile_data[field_name] = value;
+				this.saveProfileData();
 			}
 		},
-	}
+
+		saveProfileData() {
+			localStorage.setItem("profile_data", JSON.stringify(this.profile_data));
+		},
+	},
 });

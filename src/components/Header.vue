@@ -6,24 +6,15 @@
 					<ArrowIcon class="arrow" />
 				</a>
 				<img class="logo" :src="logo_icon" alt="logo" />
-				<p class="page_name">{{ page_name }}</p>
+				<p class="page_name">Profile:</p>
 			</div>
 		</div>
 	</header>
 </template>
 
-<script>
+<script setup>
 import ArrowIcon from '@/assets/images/arrow.svg';
-export default {
-	components: { ArrowIcon },
-	setup() {
-		const logo_icon = new URL('@/assets/images/logo.svg', import.meta.url).href;
-		return {
-			logo_icon,
-			page_name: "Profile"
-		};
-	}
-};
+const logo_icon = new URL('@/assets/images/logo.svg', import.meta.url).href;
 </script>
 
 <style scoped>
@@ -44,7 +35,7 @@ export default {
 	transition: fill var(--transition);
 }
 
-.arrow:hover{
+.arrow:hover {
 	fill: var(--brand-dark);
 }
 

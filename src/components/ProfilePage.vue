@@ -9,22 +9,17 @@
     <div class="container">
       <div class="content">
         <div class="inner">
-          <!--<ProjectsSection :projects="profile_data.projects" />-->
-          <!--<TasksSection :tasks="profile_data.tasks" />-->
+          <ProjectsSection />
+          <TasksSection />
         </div>
-        <!--<ProfileForm
-          :profile-data="profile_data"
-          @save="handleSave"
-        />-->
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { useProfileStore } from "@/stores/profile";
-const profile_data = useProfileStore();
-console.log("🚀 ~ profile_data:", profile_data)
+import ProjectsSection from "./ProjectsSection.vue"
+import TasksSection from "./TasksSection.vue"
 </script>
 
 <style scoped>
