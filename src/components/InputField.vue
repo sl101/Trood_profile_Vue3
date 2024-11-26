@@ -1,10 +1,10 @@
 <template>
   <input
+	:class="['input', error ? 'error_input' : '']"
     :value="modelValue"
     :type="type"
     :name="name"
     :placeholder="placeholder"
-    :class="['input', error ? 'error_input' : '']"
     @input="$emit('update:modelValue', $event.target.value)" 
     v-bind="$attrs"
   />

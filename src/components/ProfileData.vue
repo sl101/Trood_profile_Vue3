@@ -17,17 +17,24 @@
 <script setup>
 import InputField from "./InputField.vue"
 
-const props = defineProps({
-  input_fields: Array,
-  form_data: Object,
-  errors: Object
-});
-  //console.log("🚀 ~ errors:", props.errors[])
+import { useProfileStore } from "@/stores/profile";
 
+const profileStore = useProfileStore();
+const errors = profileStore.validation_errors;
+
+const form_data  = profileStore.formInputs
+
+const input_fields =  [
+  { name: "name", type: "text", placeholder: "Name" },
+  { name: "lastname", type: "text", placeholder: "Lastname" },
+  { name: "job_title", type: "text", placeholder: "Job Title" },
+  { name: "phone", type: "text", placeholder: "Phone" },
+  { name: "email", type: "email", placeholder: "Email" },
+  { name: "address", type: "text", placeholder: "Address" },
+  { name: "experience", type: "text", placeholder: "Experience" },
+];
 
 const emit = defineEmits(['update_form_data']);
-
-// Обработчик изменения значения поля
 const handleInputChange = (field_name, event) => {
   emit('update_form_data', { name: field_name, value: event.target.value });
 };
