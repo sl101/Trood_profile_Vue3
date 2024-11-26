@@ -34,8 +34,8 @@ const handleActionClick = () => {
 	height: clamp(230px, 30vw, 290px);
 	padding: clamp(30px, 4vw, 54px) clamp(26px, 4vw, 44px);
 	text-align: start;
-	background-color: var(--dark-color);
-	color: var(--gray-color);
+	background-color: var(--gray-light);
+	color: var(--gray-dark);
 	border-radius: 24px;
 }
 
@@ -54,15 +54,15 @@ const handleActionClick = () => {
 	bottom: clamp(10px, 3vw, 32px);
 	border-radius: 50%;
 	border: 1px solid transparent;
-	color: var(--gray-color);
+	color: var(--gray-dark);
 	transition: background-color var(--transition), border-color var(--transition);
 }
 
 .card_action:hover {
-	background-color: var(--brand-dark);
+	background-color: var(--brand-primary);
 }
 
 .card_action:focus {
-	border-color: var(--gray-color);
+	border-color: var(--gray-darks);
 }
 </style>

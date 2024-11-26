@@ -31,12 +31,12 @@ const logo_icon = new URL('@/assets/images/logo.svg', import.meta.url).href;
 	width: clamp(20px, 5vw, 40px);
 	height: clamp(20px, 5vw, 40px);
 	cursor: pointer;
-	fill: var(--black-color);
+	fill: var(--neutral-black);
 	transition: fill var(--transition);
 }
 
 .arrow:hover {
-	fill: var(--brand-dark);
+	fill: var(--brand-primary);
 }
 
 .logo {

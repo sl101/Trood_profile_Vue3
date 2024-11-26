@@ -20,6 +20,6 @@ import ProfilePage from "@/components/ProfilePage.vue"
 
 html {
 	font-family: var(--roboto);
-	background-color: var(--light-color);
+	background-color: var(--neutral-light);
 }
 </style>

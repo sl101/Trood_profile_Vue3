@@ -1,0 +1,27 @@
+:root {
+	/* Brand Colors */
+	--brand-primary: #a6c5e3;
+	--brand-secondary: #e9f2f3;
+	--brand-gradient: linear-gradient(180deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+
+	/* Neutral Colors */
+	--neutral-black: #000;
+	--neutral-white: #fff;
+	--neutral-dark: rgba(0, 0, 0, 0.8);
+	--neutral-light: #f5f4f4;
+
+	/* Gray Scale */
+	--gray-light: #d9d9d9;
+	--gray-medium: #49535c;
+	--gray-dark: rgba(0, 0, 0, 0.5);
+
+	/* Functional Colors */
+	--error: #e62e2e;
+
+	--aeroport: "Aeroport", serif;
+	--roboto: "Roboto", serif;
+	--inter-regular: "Inter-Regular", serif;
+	--inter-medium: "Inter-Medium", serif;
+
+	--transition: .4s ease-in-out
+}
