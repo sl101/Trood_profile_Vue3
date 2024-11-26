@@ -1,5 +1,7 @@
 # Vue Profile Page Documentation
 
+## [Open project](https://sl101.github.io/Trood_profile_Vue3)
+
 ## Project Description
 The Vue Profile Page is a single-page application (SPA) built with Vue 3. It provides an interface for managing user profiles, including personal details, tasks, and projects. The project simulates backend interactions using LocalStorage, offering data persistence and a structured approach to state management with Pinia.
 

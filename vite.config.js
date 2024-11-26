@@ -11,6 +11,7 @@ export default defineConfig({
 		vueJsx(),
 		svgLoader()
 	],
+	base: '/Trood_profile_Vue3/',
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url))
