@@ -18,7 +18,7 @@
 		</dialog>-->
 		<h1 class="sr-only">Profile Page</h1>
 		<div class="container">
-			<div class="loading" v-if="profileStore.is_loading">
+			<div class="loading" v-if="profile_store.is_loading">
 				<p>
 					Please wait, we are receiving your data <span class="dots"><span>.</span><span>.</span><span>.</span></span>
 				</p>
@@ -36,27 +36,27 @@
 
 <script setup>
 import { useProfileStore } from "@/stores/profile";
-import { ref } from "vue";
+//import { ref } from "vue";
 import EntitySection from "./EntitySection.vue";
 import ProfileForm from "./ProfileForm.vue";
 
 
-const profileStore = useProfileStore();
+const profile_store = useProfileStore();
 
-const overlayMenu = ref(null);
+//const overlayMenu = ref(null);
 
 
-const openModal = () => {
-	if (overlayMenu.value) {
-		overlayMenu.value.showModal();
-	}
-};
+//const openModal = () => {
+//	if (overlayMenu.value) {
+//		overlayMenu.value.showModal();
+//	}
+//};
 
-const closeModal = () => {
-	if (overlayMenu.value) {
-		overlayMenu.value.close();
-	}
-};
+//const closeModal = () => {
+//	if (overlayMenu.value) {
+//		overlayMenu.value.close();
+//	}
+//};
 </script>
 
 <style scoped>

@@ -1,17 +1,18 @@
 <template>
 	<form class="form" @submit.prevent="handleSave">
 		<AvatarUploader />
+	
+	  <ProfileData
+		:input_fields="input_fields"
+  :form_data="form_data"
+  :errors="errors"
+  @update_form_data="updateFormData"
+    />
 
-		<!--<ProfileData
-				inputFields={inputFields}
-				formData={formData}
-				setFormData={setFormData}
-				errors={errors}
-				setErrors={setErrors} />-->
-
-		<!--<ProfileVisibility
-				formData={formData}
-				setFormData={setFormData} />-->
+    <ProfileVisibility
+      :visibility="visibility"
+      @update_form_data="updateFormData"
+    />
 
 		<!--<ProfileInterests
 				title="The scope of your interest:"
@@ -36,7 +37,7 @@
 				} />-->
 
 		<div class="controls">
-			<button type="submit" class="btn" @click="handleSave">
+			<button type="submit" class="btn">
 				Save
 			</button>
 			<button type="button" @click="handleCancel" class="btn">
@@ -48,17 +49,43 @@
 
 <script setup>
 import AvatarUploader from "./AvatarUploader.vue"
+import ProfileData from "./ProfileData.vue"
+import ProfileVisibility from "./ProfileVisibility.vue"
+import { useProfileStore } from "@/stores/profile";
+
+const profileStore = useProfileStore();
+const errors = profileStore.validation_errors;
+
+const form_data  = profileStore.formInputs
+const visibility = profileStore.profile_data.visibility
+
+const input_fields =  [
+  { name: "name", type: "text", placeholder: "Name" },
+  { name: "lastname", type: "text", placeholder: "Lastname" },
+  { name: "job_title", type: "text", placeholder: "Job Title" },
+  { name: "phone", type: "text", placeholder: "Phone" },
+  { name: "email", type: "email", placeholder: "Email" },
+  { name: "address", type: "text", placeholder: "Address" },
+  { name: "experience", type: "text", placeholder: "Experience" },
+];
 
 // Обработчик сохранения
-const handleSave = () => {
+const handleSave = async () => {
   // Логика для сохранения данных
   console.log('Data saved');
+	await profileStore.saveProfileData();
 };
 
 // Обработчик отмены
 const handleCancel = () => {
   // Логика для отмены
   console.log('Action cancelled');
+	profileStore.fetchProfileData()
+};
+
+// Обновление данных в store
+const updateFormData = (newData) => {
+  profileStore.updateProfileField(newData.name, newData.value);
 };
 </script>
 

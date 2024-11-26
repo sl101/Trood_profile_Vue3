@@ -7,7 +7,9 @@ const default_profile_data = {
 	lastname: "",
 	job_title: "",
 	phone: "",
+	email: "",
 	address: "",
+	experience: "",
 	interests: [],
 	potential_interests: [],
 	links: [],
@@ -26,6 +28,10 @@ export const useProfileStore = defineStore("profile", {
 	getters: {
 		formData: (state) => {
 			const { projects, tasks, ...form_data } = state.profile_data;
+			return form_data;
+		},
+		formInputs: (state) => {
+			const { interests, potential_interests, links, avatar, visibility, projects, tasks, ...form_data } = state.profile_data;
 			return form_data;
 		},
 		hasErrors: (state) => Object.keys(state.validation_errors).length > 0,
@@ -59,7 +65,6 @@ export const useProfileStore = defineStore("profile", {
 			this.validateField(field_name, value);
 			if (!this.validation_errors[field_name]) {
 				this.profile_data[field_name] = value;
-				await this.saveProfileData();
 			}
 		},
 
@@ -74,5 +79,3 @@ export const useProfileStore = defineStore("profile", {
 	},
 });
 
-//const profileStore = useProfileStore();
-//profileStore.fetchProfileData();
