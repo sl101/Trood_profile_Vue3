@@ -3,7 +3,8 @@ export const api = {
 		// Simulating an API request to get a profile
 		return new Promise((resolve) => {
 			const data = JSON.parse(localStorage.getItem("profile_data"));
-			setTimeout(() => resolve(data), 3000); // Simulation of response delay
+			resolve(data);
+			//setTimeout(() => resolve(data), 3000); // Simulation of response delay
 		});
 	},
 
@@ -11,7 +12,8 @@ export const api = {
 		// Simulating an API request to update a profile
 		return new Promise((resolve) => {
 			localStorage.setItem("profile_data", JSON.stringify(profileData));
-			setTimeout(() => resolve(profileData), 3000); // Simulation of response delay
+			resolve(profileData);
+			//setTimeout(() => resolve(profileData), 3000); // Simulation of response delay
 		});
 	},
 };

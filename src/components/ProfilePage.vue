@@ -28,6 +28,7 @@
 					<EntitySection entity="projects" title="Projects:" />
 					<EntitySection entity="tasks" title="Tasks:" />
 				</div>
+				<ProfileForm/>
 			</div>
 		</div>
 	</section>
@@ -36,7 +37,9 @@
 <script setup>
 import { useProfileStore } from "@/stores/profile";
 import { ref } from "vue";
-import EntitySection from "./EntitySection .vue";
+import EntitySection from "./EntitySection.vue";
+import ProfileForm from "./ProfileForm.vue";
+
 
 const profileStore = useProfileStore();
 

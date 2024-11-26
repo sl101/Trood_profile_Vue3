@@ -18,6 +18,19 @@
 	/* Functional Colors */
 	--error: #e62e2e;
 
+	/*--brand-dark: #a6c5e3;
+	--brand-light: #e9f2f3;
+	--gray-color: rgba(0, 0, 0, 0.5);
+	--dark-transparent: rgba(0, 0, 0, 0.8);
+	--dark-gray: #49535c;
+	--light-color: #f5f4f4;
+	--dark-color: #d9d9d9; --gray-light
+	--black-color: #000;
+	--white-color: #fff;
+	--error-color: #e62e2e;
+	--brand-gradient: linear-gradient(180deg, #E9F2F3 0%, #A6C5E3 100%);*/
+
+
 	--aeroport: "Aeroport", serif;
 	--roboto: "Roboto", serif;
 	--inter-regular: "Inter-Regular", serif;
