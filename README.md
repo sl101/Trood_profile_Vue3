@@ -45,21 +45,21 @@ Open your browser and navigate to: http://localhost:5173.
 
 ## Project Structure
 
-- trood_accout_page/
-  ├── public/              # Статичные файлы
-  ├── src/
-  │   ├── components/      # Компоненты Vue
-  │   ├── stores/          # Стейт менеджеры
-  │   ├── services/        # Утилиты для валидации и работы с LocalStorage
-  │   ├── assets/          # Статичные ресурсы, включая SVG
-  │   ├── App.vue          # Главный компонент
-  │   ├── main.js          # Точка входа
-  │   └── index.css        # Глобальные стили
-  ├── dist/                # Сборка проекта
-  ├── .gitignore           # Игнорируемые файлы
-  ├── package.json         # Настройки и зависимости проекта
-  ├── vite.config.js       # Конфигурация Vite
-  └── README.md            # Документация проекта
+	- trood_accout_page/
+	- ├── public/              # Статичные файлы
+	- ├── src/
+	- │   ├── components/      # Компоненты Vue
+	- │   ├── stores/          # Стейт менеджеры
+	- │   ├── services/        # Утилиты для валидации и работы с LocalStorage
+	- │   ├── assets/          # Статичные ресурсы, включая SVG
+	- │   ├── App.vue          # Главный компонент
+	- │   ├── main.js          # Точка входа
+	- │   └── index.css        # Глобальные стили
+	- ├── dist/                # Сборка проекта
+	- ├── .gitignore           # Игнорируемые файлы
+	- ├── package.json         # Настройки и зависимости проекта
+	- ├── vite.config.js       # Конфигурация Vite
+	- └── README.md            # Документация проекта
 
 
 ## Contact Information
