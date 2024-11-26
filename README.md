@@ -45,20 +45,22 @@ Open your browser and navigate to: http://localhost:5173.
 
 ## Project Structure
 
- - vue-profile/
- - ├── public/               # Static assets
- - ├── src/
- - │   ├── assets/           # Project-specific images and fonts
- - │   ├── components/       # Vue components (EntitySection, etc.)
- - │   ├── stores/           # Pinia stores (profile store)
- - │   ├── services/         # Utilities (mock API, validation)
- - │   ├── App.vue           # Root component
- - │   ├── main.js           # Entry point
- - │   ├── styles/           # Global and shared styles
- - │   └── variables.css     # Color palette
- - ├── dist/                 # Production build
- - ├── vite.config.js        # Vite configuration
- - └── README.md             # Documentation
+- trood_accout_page/
+  ├── public/              # Статичные файлы
+  ├── src/
+  │   ├── components/      # Компоненты Vue
+  │   ├── stores/          # Стейт менеджеры
+  │   ├── services/        # Утилиты для валидации и работы с LocalStorage
+  │   ├── assets/          # Статичные ресурсы, включая SVG
+  │   ├── App.vue          # Главный компонент
+  │   ├── main.js          # Точка входа
+  │   └── index.css        # Глобальные стили
+  ├── dist/                # Сборка проекта
+  ├── .gitignore           # Игнорируемые файлы
+  ├── package.json         # Настройки и зависимости проекта
+  ├── vite.config.js       # Конфигурация Vite
+  └── README.md            # Документация проекта
+
 
 ## Contact Information
 
