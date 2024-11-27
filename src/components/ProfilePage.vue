@@ -1,24 +1,8 @@
 <template>
 	<section class="profile_page">
-		<!--<Notification
-      v-if="message"
-      :message="message"
-      @close="message = ''"
-    />-->
-		<!--<button type="button" @click="openModal">
-			Open overlay
-		</button>-->
-		<!--<dialog ref="overlayMenu">
-			<form method="dialog">
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-				<button class="close_dialog" type="submit">
-					Close
-				</button>
-			</form>
-		</dialog>-->
 		<h1 class="sr-only">Profile Page</h1>
 		<div class="container">
-			<div class="loading" v-if="profile_store.is_loading">
+			<div class="loading" v-if="profileStore.is_loading">
 				<p>
 					Please wait, we are receiving your data <span class="dots"><span>.</span><span>.</span><span>.</span></span>
 				</p>
@@ -36,27 +20,10 @@
 
 <script setup>
 import { useProfileStore } from "@/stores/profile";
-//import { ref } from "vue";
 import EntitySection from "./EntitySection.vue";
 import ProfileForm from "./ProfileForm.vue";
 
-
-const profile_store = useProfileStore();
-
-//const overlayMenu = ref(null);
-
-
-//const openModal = () => {
-//	if (overlayMenu.value) {
-//		overlayMenu.value.showModal();
-//	}
-//};
-
-//const closeModal = () => {
-//	if (overlayMenu.value) {
-//		overlayMenu.value.close();
-//	}
-//};
+const profileStore = useProfileStore();
 </script>
 
 <style scoped>
@@ -132,49 +99,4 @@ const profile_store = useProfileStore();
 		text-align: center;
 	}
 }
-
-/*dialog{
-	margin:  auto;
-	max-width: 80%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 0;
-	scale: 1.05;
-	border-radius: 12px;
-	transition: all var(--transition);
-}
-
-dialog[open] {
-	opacity: 1;
-	scale: 1;
-}
-
-form {
-	background-color: var(--neutral-light);
-	padding: 20px 40px;
-
-	color: var(--black-color);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 20px;
-}
-
-.close_dialog {
-	align-self: end;
-	padding: 6px 12px;
-	border: 1px solid var(--gray-medium);
-	border-radius: 12px;
-	cursor: pointer;
-	transition: background-color var(--transition), color var(--transition), border-color var(--transition);
-
-}
-
-.close_dialog:hover {
-	background-color: var(--neutral-dark);
-	border-color: var(--neutral-dark);
-	color: var(--neutral-light);
-}*/
 </style>./EntitySection .vue

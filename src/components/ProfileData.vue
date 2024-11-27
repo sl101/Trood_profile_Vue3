@@ -22,7 +22,7 @@ import { useProfileStore } from "@/stores/profile";
 const profileStore = useProfileStore();
 const errors = profileStore.validation_errors;
 
-const form_data  = profileStore.formInputs
+const form_data  = profileStore.formInputs;
 
 const input_fields =  [
   { name: "name", type: "text", placeholder: "Name" },

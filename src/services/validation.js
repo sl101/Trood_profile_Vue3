@@ -53,8 +53,15 @@ export const validateVisibility = (value) => {
 	return null;
 };
 
-export const validateInterests = (interests) => {
+export const validatePotential_interests = (interests) => {
+	return validateInterest(interests);
+};
 
+export const validateInterests = (interests) => {
+	return validateInterest(interests);
+};
+
+const validateInterest = (interests) => {
 	let message;
 
 	if (interests.length > 10) {

@@ -1,4 +1,10 @@
 <template>
+	<dialog ref="error_dialog">
+		<form method="dialog" :class="dialog_class">
+			<p>{{ dialog_message }}</p>
+			<button class="close_dialog" type="button" @click="closeModal">Close</button>
+		</form>
+	</dialog>
 	<form class="form" @submit.prevent="handleSave">
 		<AvatarUploader />
 
@@ -6,21 +12,11 @@
 
 		<ProfileVisibility @update_form_data="updateFormData" />
 
-		<!--<ProfileInterests
-				title="The scope of your interest:"
-				list={formData.interests}
-				onSave={(updated_interests) =>
-					setFormData((prev) => ({ ...prev, interests: updated_interests }))
-				}
-			/>-->
+		<ProfileInterests ref="profile_interests_ref_1" title="The scope of your interest:" entity="interests"
+			@update_errors="handleErrors" @update_form_data="updateFormData" />
 
-		<!--<ProfileInterests
-				title="Potential Interests"
-				list={formData.potential_interests}
-				onSave={(updated_interests) =>
-					setFormData((prev) => ({ ...prev, potential_interests: updated_interests }))
-				}
-			/>-->
+		<ProfileInterests  ref="profile_interests_ref_2" title="Potential Interests:" entity="potential_interests"
+			@update_errors="handleErrors" @update_form_data="updateFormData" />
 
 		<!--<ProfileLinks
 				initial_links={formData.links}
@@ -40,33 +36,53 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useProfileStore } from "@/stores/profile";
 import AvatarUploader from "./AvatarUploader.vue";
 import ProfileData from "./ProfileData.vue";
 import ProfileVisibility from "./ProfileVisibility.vue";
-import { useProfileStore } from "@/stores/profile";
+import ProfileInterests from "./ProfileInterests.vue";
 
 const profileStore = useProfileStore();
 
-//const visibility = profileStore.profile_data.visibility
+const error_dialog = ref(null);
+const dialog_message = ref("");
+const dialog_class = ref("");
+const profile_interests_ref_1 = ref(null);
+const profile_interests_ref_2 = ref(null);
 
-// Обработчик сохранения
 const handleSave = async () => {
-	// Логика для сохранения данных
-	console.log('Data saved');
 	await profileStore.saveProfileData();
+	dialog_class.value = "success";
+	dialog_message.value = "Data saved";
+	profile_interests_ref_1.value?.cancelInterest();
+	profile_interests_ref_2.value?.cancelInterest();
+	error_dialog.value?.showModal();
 };
 
-// Обработчик отмены
 const handleCancel = () => {
-	// Логика для отмены
 	console.log('Action cancelled');
 	profileStore.fetchProfileData();
 };
 
-// Обновление данных в store
 const updateFormData = (newData) => {
 	profileStore.updateProfileField(newData.name, newData.value);
 };
+
+const handleErrors = (message) => {
+	if (message) {
+		dialog_message.value = message;
+		dialog_class.value = "error";
+		error_dialog.value?.showModal();
+	}
+};
+
+const closeModal = () => {
+	error_dialog.value?.close();
+	dialog_message.value = "";
+
+};
+
 </script>
 
 <style scoped>
@@ -119,5 +135,63 @@ const updateFormData = (newData) => {
 	.controls {
 		flex-wrap: wrap;
 	}
+}
+
+dialog {
+	margin: auto;
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	scale: 1.05;
+	border-radius: 12px;
+	border: none;
+}
+
+dialog[open] {
+	opacity: 1;
+	scale: 1;
+}
+
+dialog form {
+	width: 100%;
+	background-color: var(--neutral-light);
+	padding: 20px 40px;
+	color: var(--black-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	transition: all 0s ease-in-out;
+}
+
+dialog .success {
+	border-radius: 12px;
+	border: 2px solid var(--success);
+	color: var(--success);
+}
+
+dialog .error {
+	border-radius: 12px;
+	border: 2px solid var(--error);
+	color: var(--error);
+}
+
+
+.close_dialog {
+	align-self: end;
+	padding: 6px 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	border: 1px solid var(--gray-medium);
+	transition: background-color var(--transition);
+}
+
+.close_dialog:hover {
+	background-color: var(--neutral-dark);
+	border-color: var(--neutral-dark);
+	color: var(--neutral-light);
 }
 </style>
