@@ -1,10 +1,10 @@
 <template>
-	<dialog ref="error_dialog">
-		<form method="dialog" :class="dialog_class">
-			<p>{{ dialog_message }}</p>
-			<button class="close_dialog" type="button" @click="closeModal">Close</button>
-		</form>
-	</dialog>
+	  <CustomDialog
+    ref="error_dialog"
+    :message="dialog_message"
+    :type="dialog_class"
+    @closed="closeModal"
+  />
 	<form class="form" @submit.prevent="handleSave">
 		<AvatarUploader />
 
@@ -15,14 +15,10 @@
 		<ProfileInterests ref="profile_interests_ref_1" title="The scope of your interest:" entity="interests"
 			@update_errors="handleErrors" @update_form_data="updateFormData" />
 
-		<ProfileInterests  ref="profile_interests_ref_2" title="Potential Interests:" entity="potential_interests"
+		<ProfileInterests ref="profile_interests_ref_2" title="Potential Interests:" entity="potential_interests"
 			@update_errors="handleErrors" @update_form_data="updateFormData" />
 
-		<!--<ProfileLinks
-				initial_links={formData.links}
-				onSave={(updatedLinks) =>
-					setFormData((prev) => ({ ...prev, links: updatedLinks }))
-				} />-->
+		<ProfileLinks @update_form_data="updateFormData" />
 
 		<div class="controls">
 			<button type="submit" class="btn">
@@ -42,12 +38,15 @@ import AvatarUploader from "./AvatarUploader.vue";
 import ProfileData from "./ProfileData.vue";
 import ProfileVisibility from "./ProfileVisibility.vue";
 import ProfileInterests from "./ProfileInterests.vue";
+import ProfileLinks from "./ProfileLinks.vue";
+import CustomDialog from "./CustomDialog.vue";
 
 const profileStore = useProfileStore();
 
 const error_dialog = ref(null);
 const dialog_message = ref("");
 const dialog_class = ref("");
+
 const profile_interests_ref_1 = ref(null);
 const profile_interests_ref_2 = ref(null);
 
@@ -57,11 +56,10 @@ const handleSave = async () => {
 	dialog_message.value = "Data saved";
 	profile_interests_ref_1.value?.cancelInterest();
 	profile_interests_ref_2.value?.cancelInterest();
-	error_dialog.value?.showModal();
+	error_dialog.value?.showDialog();
 };
 
 const handleCancel = () => {
-	console.log('Action cancelled');
 	profileStore.fetchProfileData();
 };
 
@@ -73,14 +71,12 @@ const handleErrors = (message) => {
 	if (message) {
 		dialog_message.value = message;
 		dialog_class.value = "error";
-		error_dialog.value?.showModal();
+		error_dialog.value?.showDialog();
 	}
 };
 
 const closeModal = () => {
-	error_dialog.value?.close();
 	dialog_message.value = "";
-
 };
 
 </script>

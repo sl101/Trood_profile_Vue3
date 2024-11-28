@@ -89,19 +89,21 @@ const validateInterest = (interests) => {
 	return message ? message : null;
 };
 
-export const validateProfileLink = (link) => {
-	if (!link) {
-		return "The link must be a valid URL ";
-	}
+export const validateLinks = (links) => {
+	const error = links.find((item) => {
+		const url = item.url;
+		if (!url) {
+			return true;
+		}
+		if (url.length > 200) {
+			return true;
+		}
+		const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+		if (!urlPattern.test(url.trim())) {
+			return true;
+		}
+		return false;
+	});
 
-	if (link.length > 200) {
-		return "The link must be 200 characters or less.";
-	}
-
-	const urlPattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
-	if (!urlPattern.test(link.trim())) {
-		return "The link must be a valid URL starting with http:// or https://.";
-	}
-
-	return "";
+	return error ? "The link must be a valid URL" : ""; // 
 };

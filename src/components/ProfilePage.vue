@@ -24,6 +24,7 @@ import EntitySection from "./EntitySection.vue";
 import ProfileForm from "./ProfileForm.vue";
 
 const profileStore = useProfileStore();
+
 </script>
 
 <style scoped>

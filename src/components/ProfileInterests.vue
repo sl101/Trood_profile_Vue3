@@ -37,8 +37,8 @@ import { defineProps, computed, ref, watch } from "vue";
 import { useProfileStore } from "@/stores/profile";
 import CircleButton from "./CircleButton.vue"
 
-const emit = defineEmits(["update_form_data", "update_errors"]);
 const profileStore = useProfileStore();
+const emit = defineEmits(["update_form_data", "update_errors"]);
 
 const new_item = ref("");
 const is_adding = ref(false)
@@ -49,7 +49,6 @@ const props = defineProps({
   title: String,
   entity: String,
 });
-
 
 const setIsAdding =()=>{
 	is_adding.value = true
