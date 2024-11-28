@@ -87,4 +87,4 @@ All profile data, including user information and links, is stored in LocalStorag
 
 ## Contact Information
 
-For inquiries, feel free to reach out via [telegram](https://t.me/Viacheslav_Zhevaha) or [Email](v.zhevaga@gmail.com).
+For inquiries, feel free to reach out via [telegram](https://t.me/Viacheslav_Zhevaha) .
